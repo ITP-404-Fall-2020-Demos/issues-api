@@ -21,6 +21,11 @@ class IssueController {
 
     return issue
   }
+
+  async destroy({ params }) {
+    const issue = await Issue.find(params.id)
+    await issue.delete()
+  }
 }
 
 module.exports = IssueController
