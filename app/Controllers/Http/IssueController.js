@@ -26,6 +26,17 @@ class IssueController {
     const issue = await Issue.find(params.id)
     await issue.delete()
   }
+
+  async update({ params, request }) {
+    const { title, label } = request.all()
+
+    const issue = await Issue.find(params.id)
+    issue.title = title
+    issue.label = label
+    await issue.save()
+
+    return issue
+  }
 }
 
 module.exports = IssueController
