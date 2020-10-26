@@ -11,12 +11,13 @@ class IssueController {
     return Issue.find(params.id)
   }
 
-  async store({ request }) {
+  async store({ auth, request }) {
     const { title, label } = request.all()
 
     const issue = new Issue()
     issue.title = title
     issue.label = label
+    issue.user_id = auth.user.id
     await issue.save()
 
     return issue
