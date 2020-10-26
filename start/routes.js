@@ -21,4 +21,8 @@ Route.on('/').render('welcome')
 Route.group(() => {
   Route.get('labels', 'LabelController.index')
   Route.resource('issues', 'IssueController').apiOnly()
+  Route.post('users', 'UserController.store')
+  Route.post('login', 'UserController.login')
+  Route.post('logout', 'UserController.logout')
+  Route.get('user', 'UserController.show')
 }).prefix('api')
