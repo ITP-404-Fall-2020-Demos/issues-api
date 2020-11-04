@@ -17,3 +17,8 @@
 const Route = use('Route')
 
 Route.on('/').render('welcome')
+
+Route.group(() => {
+  Route.get('labels', 'LabelController.index')
+  Route.resource('issues', 'IssueController')
+}).prefix('api')
