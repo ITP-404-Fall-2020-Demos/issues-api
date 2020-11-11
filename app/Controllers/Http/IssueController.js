@@ -14,12 +14,13 @@ class IssueController {
   }
 
   // POST /api/issues
-  async store({ request }) {
+  async store({ request, auth }) {
     const { title, label } = request.all()
 
     const issue = new Issue()
     issue.title = title
     issue.label = label
+    issue.user_id = auth.user.id
     await issue.save()
 
     return issue
